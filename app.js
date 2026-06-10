@@ -265,7 +265,7 @@ const products = [
     description: "Riñonera Militar Caballero con diseño táctico y múltiples variantes de camuflaje.",
     colors: ["Negro", "Camuflaje Selva", "Coyote Brown", "Desert Digital", "Camuflaje Urbano"],
     stock: "Consultar disponibilidad",
-    imageUrl: "img/RI%C3%91ONERA%20MILITAR.jpeg",
+    imageUrl: "img/Riñonera%20militar.jpeg",
     image: "linear-gradient(135deg, #2a2a2a, #5a6b68)",
     price: 6500,
     sold: 8,
