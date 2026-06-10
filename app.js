@@ -206,20 +206,6 @@ const products = [
     sold: 71,
   },
   {
-    id: 12,
-    name: "Chaleco Importado Basic",
-    code: "CH-025",
-    category: "caballero-chalecos",
-    description: "Chaleco liviano importado con cierre frontal y bolsillos.",
-    material: "Poliester",
-    measures: "Talles M al XXL",
-    colors: ["Negro", "Gris", "Azul"],
-    stock: "Consultar disponibilidad",
-    image: "linear-gradient(135deg, #2f3640, #aeb4bb)",
-    price: 31800,
-    sold: 64,
-  },
-  {
     id: 15,
     name: "Billetera CARP",
     code: "Rp12",
@@ -244,6 +230,97 @@ const products = [
     image: "linear-gradient(135deg, #2d211c, #4b5a66)",
     price: 6500,
     sold: 28,
+  },
+  {
+    id: 17,
+    name: "Riñonera Caballero",
+    code: "2102",
+    category: "caballero-rinoneras",
+    description: "Riñonera para caballero, durable y con varios compartimentos.",
+    colors: ["Azul", "Verde", "Gris", "Negra"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/24.jpeg",
+    image: "linear-gradient(135deg, #2d3c6f, #6b7d82)",
+    price: 6500,
+    sold: 12,
+  },
+  {
+    id: 18,
+    name: "Riñoneras Dama",
+    code: "3124",
+    category: "dama-rinoneras",
+    description: "Riñoneras Dama con diseño elegante y múltiples colores disponibles.",
+    colors: ["Dorado", "Rosa", "Blanco", "Celeste", "Negro", "Rosa brillante"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/21.jpeg",
+    image: "linear-gradient(135deg, #ecb3c8, #f7e9e2)",
+    price: 6500,
+    sold: 10,
+  },
+  {
+    id: 19,
+    name: "Riñonera Militar Caballero",
+    code: "3125",
+    category: "caballero-rinoneras",
+    description: "Riñonera Militar Caballero con diseño táctico y múltiples variantes de camuflaje.",
+    colors: ["Negro", "Camuflaje Selva", "Coyote Brown", "Desert Digital", "Camuflaje Urbano"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/ri%C3%B1onera%20militar.jpeg",
+    image: "linear-gradient(135deg, #2a2a2a, #5a6b68)",
+    price: 6500,
+    sold: 8,
+  },
+  {
+    id: 20,
+    name: "Riñonera V1 Caballero",
+    code: "3126",
+    category: "caballero-rinoneras",
+    description: "Riñonera V1 Caballero con diseño masculino y compartimentos prácticos.",
+    colors: ["Negro", "Azul oscuro", "Gris", "Verde"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/RI%C3%91ONERA.jpeg",
+    image: "linear-gradient(135deg, #1c1c1c, #4e5f6f)",
+    price: 6500,
+    sold: 5,
+  },
+  {
+    id: 21,
+    name: "Tote bag Dama",
+    code: "216",
+    category: "dama-tote",
+    description: "Tote bag Dama con estilo fresco y capacidad amplia.",
+    colors: ["Celeste", "Negro", "Azul oscuro"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/TOTE%20BAG%20%20celeste%20negro%20azul.jpeg",
+    image: "linear-gradient(135deg, #7fb8dc, #1f2937)",
+    price: 14500,
+    sold: 6,
+  },
+  {
+    id: 22,
+    name: "TOTE BAG DAMA",
+    code: "240",
+    category: "dama-tote",
+    description: "TOTE BAG DAMA con combinación elegante en marrón y negro.",
+    colors: ["Marron", "Negro"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/TOTE%20BAG%20Marron%20y%20Negro.jpeg",
+    image: "linear-gradient(135deg, #6c4b33, #14110f)",
+    price: 18000,
+    sold: 4,
+  },
+  {
+    id: 23,
+    name: "TOTE BAG DAMA",
+    code: "201",
+    category: "dama-tote",
+    description: "TOTE BAG DAMA en blanco y negro con diseño atemporal.",
+    colors: ["Negro", "Blanco"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/TOTEBAG%20blanco%20y%20negro.jpeg",
+    image: "linear-gradient(135deg, #111111, #f5f5f5)",
+    price: 14500,
+    sold: 7,
   },
 ];
 
@@ -377,7 +454,7 @@ function renderProductCard(product) {
   const category = getCategory(product.category);
   return `
     <article class="product-card">
-      <button class="product-image" type="button" data-detail="${product.id}" style="background:${product.image}" aria-label="Ver detalle de ${productAlt(product)}">
+      <button class="product-image${product.id === 13 ? " product-image--large" : ""}" type="button" data-detail="${product.id}" style="background:${product.image}" aria-label="Ver detalle de ${productAlt(product)}">
         ${renderProductImage(product, category.group)}
       </button>
       <div class="product-body">
@@ -483,7 +560,7 @@ function openDetail(productId) {
   const category = getCategory(product.category);
   els.detail.innerHTML = `
     <button class="icon-button" type="button" data-close-detail aria-label="Cerrar detalle">×</button>
-    <div class="detail-gallery" style="background:${product.image}" role="img" aria-label="${productAlt(product)}">
+    <div class="detail-gallery${product.id === 13 ? " detail-gallery--large" : ""}" style="background:${product.image}" role="img" aria-label="${productAlt(product)}">
       ${product.imageUrl ? `<img src="${product.imageUrl}" alt="${productAlt(product)}" />` : `<span>${product.name}</span>`}
     </div>
     <div>
