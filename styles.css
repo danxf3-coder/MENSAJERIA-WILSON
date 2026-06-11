@@ -191,10 +191,11 @@ button {
 .btn-whatsapp svg {
   width: 18px;
   height: 18px;
-  flex-s  display: inline-flex;
+ display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .btn-whatsapp svg {
