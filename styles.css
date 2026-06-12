@@ -1197,3 +1197,8 @@ textarea {
     transform: translateX(0);
   }
 }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 500;
+}
