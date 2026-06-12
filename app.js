@@ -958,7 +958,7 @@ const products = [
     description: "Talles: S al 3xl\n18.000 por mayor (curva de 10 camisetas)\n20.000 c/u (eligiendo talles y modelo)\n25.000 c/u llevando 2\n30.000 por unidad",
     colors: ["Celeste", "Blanco"],
     stock: "Consultar disponibilidad",
-    imageUrl: "img/Camiseta argentina Messi.jpeg",
+    imageUrl: "img/Camiseta argentina.jpeg",
     image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
     price: 18000,
     sold: 0,
