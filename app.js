@@ -1822,7 +1822,19 @@ const products = [
     price: 6000,
     sold: 0,
   },
-   
+   {
+    id: 146,
+    name: "MINI BAG V9",
+    code: "221",
+    category: "dama-minibags",
+    description: "3 cierres",
+    colors: ["Beige", "Negro", "Marron"],
+    stock: "Consultar disponibilidad",
+    imageUrl: "img/Cod226.jpeg",
+    image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
+    price: 14000,
+    sold: 0,
+  },
 ];
 
 let state = {
@@ -1971,36 +1983,68 @@ function renderProductCard(product) {
           <span>${PURCHASE_LABEL}<strong>${formatProductPrice(product)}</strong></span>
           <span>Stock<strong>${product.stock}</strong></span>
         </div>
-        <div class="card-controls">
-          <label>
-            Cant.
-            <input type="number" min="1" value="1" data-card-qty="${product.id}" />
-          </label>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-primary" type="button" data-add="${product.id}">Agregar</button>
-          <button class="btn btn-secondary" type="button" data-consult="${product.id}">Consultar</button>
-        </div>
-      </div>
+       <div class="card-controls">
+
+  <div>
+    <strong>Color</strong>
+
+    <div class="color-selector">
+      ${product.colors.map((color, index) => `
+        <button
+          type="button"
+          class="color-dot ${index === 0 ? "active" : ""}"
+          data-color="${color}"
+          title="${color}">
+        </button>
+      `).join("")}
+    </div>
+  </div>
+
+  <label>
+    Cant.
+    <input type="number" min="1" value="1" data-detail-qty />
+  </label>
+</div>
+<div class="card-actions">
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-add="${product.id}">
+    Agregar
+  </button>
+
+  <button
+    class="btn btn-secondary"
+    type="button"
+    data-consult="${product.id}">
+    Consultar
+  </button>
+</div>
     </article>
   `;
 }
-
-function addToCart(productId, quantity) {
+function addToCart(productId, quantity, color = "") {
   const product = products.find((item) => item.id === productId);
   if (!product) return;
 
-  const key = String(productId);
+  const key = `${productId}-${color}`;
+
   const existing = state.cart.find((item) => item.key === key);
+
   if (existing) {
     existing.quantity += quantity;
   } else {
-    state.cart.push({ key, productId, quantity });
+    state.cart.push({
+      key,
+      productId,
+      quantity,
+      color
+    });
   }
+
   renderCart();
   openCart();
 }
-
 function renderCart() {
   const count = state.cart.reduce((sum, item) => sum + item.quantity, 0);
   els.cartCounts.forEach((countEl) => {
@@ -2021,8 +2065,10 @@ function renderCart() {
         <article class="cart-item">
           <div class="cart-thumb" style="background:${product.image}" aria-hidden="true"></div>
           <div>
-            <h3>${product.name}</h3>
-            <p>${product.code} · ${PURCHASE_LABEL} · ${formatProductPrice(product)}</p>
+          <div>
+  <h3>${product.name}</h3>
+  <p><strong>Color:</strong> ${item.color || "No seleccionado"}</p>
+  <p>${product.code} · ${PURCHASE_LABEL} · ${formatProductPrice(product)}</p>
             <div class="quantity-row">
               <button class="qty-btn" type="button" data-dec="${item.key}" aria-label="Restar cantidad">−</button>
               <strong>${item.quantity}</strong>
@@ -2156,22 +2202,44 @@ document.addEventListener("click", (event) => {
 
   const detail = event.target.closest("[data-detail]");
   if (detail) openDetail(Number(detail.dataset.detail));
+ const add = event.target.closest("[data-add]");
 
-  const add = event.target.closest("[data-add]");
-  if (add) {
-    const id = Number(add.dataset.add);
-    const quantity = Math.max(1, Number(document.querySelector(`[data-card-qty="${id}"]`).value || 1));
-    addToCart(id, quantity);
-  }
+if (add) {
+  const card = add.closest(".product-card");
 
-  const detailAdd = event.target.closest("[data-detail-add]");
-  if (detailAdd) {
-    addToCart(
-      Number(detailAdd.dataset.detailAdd),
-      Math.max(1, Number(document.querySelector("[data-detail-qty]").value || 1)),
-    );
-    closeDetail();
-  }
+  const selectedColor =
+    card.querySelector(".color-dot.active")?.dataset.color || "";
+
+  const quantity = Math.max(
+    1,
+    Number(card.querySelector('input[type="number"]').value || 1)
+  );
+
+  addToCart(
+    Number(add.dataset.add),
+    quantity,
+    selectedColor
+  );
+}
+
+ const detailAdd = event.target.closest("[data-detail-add]");
+
+if (detailAdd) {
+
+  const selectedColor =
+    els.detailModal.querySelector(".color-dot.active")?.dataset.color || "";
+
+  addToCart(
+    Number(detailAdd.dataset.detailAdd),
+    Math.max(
+      1,
+      Number(document.querySelector("[data-detail-qty]").value || 1)
+    ),
+    selectedColor
+  );
+
+  closeDetail();
+}
 
   const consult = event.target.closest("[data-consult]");
   if (consult) consultProduct(Number(consult.dataset.consult));
@@ -2216,6 +2284,15 @@ document.addEventListener("click", (event) => {
     renderCategories();
     renderProducts();
   }
+  const colorDot = event.target.closest(".color-dot");
+
+if (colorDot) {
+  colorDot.parentElement
+    .querySelectorAll(".color-dot")
+    .forEach(dot => dot.classList.remove("active"));
+
+  colorDot.classList.add("active");
+}
 });
 
 els.menuToggle.addEventListener("click", () => {

@@ -354,7 +354,7 @@ h3 {
   height: 34%;
   background:
     linear-gradient(135deg, rgba(32, 32, 32, 0.66), rgba(198, 167, 106, 0.22)),
-    url("https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=80") center/cover;
+    url("img/Cod3.jpeg") center/cover;
 }
 
 .benefits {
@@ -1240,3 +1240,39 @@ textarea {
   }
 
 }
+.color-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.color-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-dot:hover {
+  transform: scale(1.1);
+}
+
+.color-dot.active {
+  border: 3px solid #111;
+  transform: scale(1.15);
+}
+
+.color-dot[data-color="Negro"] { background: #111; }
+.color-dot[data-color="Blanco"] { background: #fff; }
+.color-dot[data-color="Beige"] { background: #d9c2a3; }
+.color-dot[data-color="Marron"] { background: #7a5230; }
+.color-dot[data-color="Marrón"] { background: #7a5230; }
+.color-dot[data-color="Rojo"] { background: #c62828; }
+.color-dot[data-color="Azul"] { background: #1565c0; }
+.color-dot[data-color="Celeste"] { background: #6ec6ff; }
+.color-dot[data-color="Verde"] { background: #2e7d32; }
+.color-dot[data-color="Gris"] { background: #757575; }
+.color-dot[data-color="Rosa"] { background: #f48fb1; }
