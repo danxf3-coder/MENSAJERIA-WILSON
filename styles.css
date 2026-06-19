@@ -1276,3 +1276,27 @@ textarea {
 .color-dot[data-color="Verde"] { background: #2e7d32; }
 .color-dot[data-color="Gris"] { background: #757575; }
 .color-dot[data-color="Rosa"] { background: #f48fb1; }
+.cart-panel label {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.cart-panel input {
+  height: 36px;
+  padding: 8px 12px;
+  margin-top: 4px;
+}
+
+.cart-panel textarea {
+  min-height: 45px;
+  height: 45px;
+  padding: 8px 12px;
+  margin-top: 4px;
+  resize: none;
+}
+
+.cart-note {
+  font-size: 12px;
+  margin: 6px 0;
+}

@@ -2138,35 +2138,26 @@ function closeDetail() {
 
 function buildOrderMessage() {
   const customer = els.customerName.value.trim() || "No indicado";
-  const notes = els.customerNotes.value.trim() || "Sin aclaraciones";
-  const lines = state.cart.map((item, index) => {
+
+  const lines = state.cart.map((item) => {
     const product = products.find((entry) => entry.id === item.productId);
-    const unit = formatProductPrice(product);
+
     const subtotal = productSubtotal(product, item.quantity);
-    return `${index + 1}. Producto: ${product.name}
-   Codigo: ${product.code}
-   Categoria: ${getCategory(product.category).name}
-   Compra: ${PURCHASE_LABEL}
-   Cantidad: ${item.quantity}
-   Precio unitario: ${unit}
-   Subtotal: ${hasPrice(product) ? money.format(subtotal) : "Consultar"}`;
+
+    return `• ${product.name}
+  Color: ${item.color}
+  Cantidad: ${item.quantity}
+  Precio: ${formatProductPrice(product)}
+  Subtotal: ${money.format(subtotal)}`;
   });
 
-  return `Hola R&B mayorista, quiero hacer una consulta/pedido:
-
-Cliente:
-${customer}
-
-Productos:
+  return `Nuevo pedido:
 
 ${lines.join("\n\n")}
 
-Total estimado: ${money.format(cartTotal())}
+TOTAL: ${money.format(cartTotal())}
 
-Aclaraciones:
-${notes}
-
-Quedo atento/a para confirmar disponibilidad y formas de entrega.`;
+Cliente: ${customer}`;
 }
 
 function whatsappUrl(message = "Hola R&B mayorista, quiero hacer una consulta.") {
