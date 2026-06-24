@@ -1,40 +1,40 @@
-const WHATSAPP_NUMBER = "5491132797598";
+const WHATSAPP_NUMBER = "5491167016489";
 
-const PURCHASE_LABEL = "Mayorista";
+const PURCHASE_LABEL = "Precio";
 
 const categories = [
   { id: "all", name: "Todas", group: "Catalogo" },
-  { id: "ofertas-productos", name: "Ofertas", group: "Caballero-Dama" },
-  { id: "caballero-billeteras", name: "Billeteras", group: "Caballero" },
-  { id: "caballero-rinoneras", name: "Riñoneras", group: "Caballero" },
-  { id: "caballero-bandoleras", name: "Bandoleras", group: "Caballero" },
-  { id: "caballero-pecheras", name: "Pecheras", group: "Caballero" },
-  { id: "caballero-camperas", name: "Camperas importadas", group: "Caballero" },
-  { id: "caballero-chalecos", name: "Chalecos importados", group: "Caballero" },
-  { id: "caballero-neceser", name: "neceser", group: "Caballero" },
-  { id: "caballero-afa", name: "Camisetas AFA", group: "Caballero" },
-  { id: "Carteras-Damas", name: "Carteras", group: "Dama" },
-  { id: "dama-billeteras-grandes", name: "Billeteras grandes", group: "Dama" },
-  { id: "dama-billeteras-medianas", name: "Billeteras medianas", group: "Dama" },
-  { id: "dama-rinoneras", name: "Riñoneras", group: "Dama" },
-  { id: "dama-pecheras", name: "Pecheras", group: "Dama" },
-  { id: "dama-neceser", name: "Neceser", group: "Dama" },
-  { id: "dama-tote", name: "Tote Bag Grande", group: "Dama" },
-  { id: "dama-tarjeteros", name: "Tarjeteros", group: "Dama" },
-  { id: "dama-portacelulares", name: "Portacelulares", group: "Dama" },
-  { id: "dama-mini-tote", name: "Mini Tote", group: "Dama" },
-  { id: "dama-mini-bags", name: "Mini Bags", group: "Dama" },
-  { id: "dama-bandoleras", name: "Bandoleras", group: "Dama" },
+  { id: "ofertas-productos", name: "Ofertas", group: "" },
+  { id: "machetes", name: "Machetes", group: "Hogar y Jardín" },
+  { id: "tijera-podar", name: "Tijeras para podar", group: "Hogar y Jardín" },
+  { id: "bieldo", name: "Bieldo - Jardineria", group: "Hogar y Jardín" },
+  { id: "Pico punta-cabo oval", name: "Pico punta pala cabo", group: "Hogar y Jardín" },
+  { id: "tijeras-cerco", name: "Tijera para cercos", group: "Hogar y Jardín" },
+  { id: "Palas", name: "Palas-Jardín", group: "Hogar y Jardín" },
+  { id: "", name: "", group: "Hogar y Jardín" },
+  { id: "", name: "", group: "Hogar y Jardín" },
+  { id: "cera depiñar", name: "Ceras y Accesorios", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
+  { id: "", name: "", group: "Belleza y Estética" },
 ];
 
 const products = [
   {
     id: 13,
-    name: "Neceser corazon 2623",
+    name: "",
     code: "2623",
     category: "dama-neceser",
     description: "Neceser con aplique de corazon, brillos y pompón.",
-    colors: ["Rosa", "Negro", "Celeste", "Verde claro"],
+    colors: [],
     stock: "Consultar disponibilidad",
     imageUrl: "img/neceser-2623.jpg",
     image: "linear-gradient(135deg, #d6a6a6, #8fd4c9)",
@@ -43,7 +43,7 @@ const products = [
   },
   {
     id: 14,
-    name: "Billetera caballero 0473",
+    name: "",
     code: "0473",
     category: "caballero-billeteras",
     description: "Billetera de caballero. Consultar colores disponibles.",
@@ -56,7 +56,7 @@ const products = [
   },
   {
     id: 15,
-    name: "Billetera CARP",
+    name: "",
     code: "Rp12",
     category: "caballero-billeteras",
     description: "Billetera CARP con diseño elegante y espacio para tarjetas.",
@@ -69,7 +69,7 @@ const products = [
   },
   {
     id: 16,
-    name: "Billetera CABJ",
+    name: "",
     code: "Bj10",
     category: "caballero-billeteras",
     description: "Billetera CABJ con terminaciones reforzadas y estilo premium.",
@@ -82,7 +82,7 @@ const products = [
   },
   {
     id: 17,
-    name: "Riñonera Caballero",
+    name: "",
     code: "2102",
     category: "caballero-rinoneras",
     description: "Riñonera para caballero, durable y con varios compartimentos.",
@@ -95,7 +95,7 @@ const products = [
   },
   {
     id: 18,
-    name: "Riñoneras Dama",
+    name: "",
     code: "3124",
     category: "dama-rinoneras",
     description: "Riñoneras Dama con diseño elegante y múltiples colores disponibles.",
@@ -108,11 +108,11 @@ const products = [
   },
   {
     id: 19,
-    name: "Riñonera Militar Caballero",
+    name: "",
     code: "3125",
     category: "caballero-rinoneras",
     description: "Riñonera Militar Caballero con diseño táctico y múltiples variantes de camuflaje.",
-    colors: ["Negro", "Camuflaje Selva", "Coyote Brown", "Desert Digital", "Camuflaje Urbano"],
+    colors: [],
     stock: "Consultar disponibilidad",
     imageUrl: "img/Riñonera%20militar.jpeg",
     image: "linear-gradient(135deg, #2a2a2a, #5a6b68)",
@@ -121,7 +121,7 @@ const products = [
   },
   {
     id: 20,
-    name: "Riñonera V1 Caballero",
+    name: "",
     code: "3126",
     category: "caballero-rinoneras",
     description: "Riñonera V1 Caballero con diseño masculino y compartimentos prácticos.",
@@ -134,7 +134,7 @@ const products = [
   },
   {
     id: 2 ,
-    name: "Tote bag mini Dama",
+    name: "",
     code: "236",
     category: "dama-tote",
     description: "Tote bag Dama con estilo fresco y capacidad amplia.",
@@ -147,7 +147,7 @@ const products = [
   },
   {
     id: 22,
-    name: "TOTE BAG GRANDE DAMA",
+    name: "",
     code: "240",
     category: "dama-tote",
     description: "TOTE BAG DAMA con combinación elegante en marrón y negro.",
@@ -160,7 +160,7 @@ const products = [
   },
   {
     id: 23,
-    name: "TOTE BAG MINI",
+    name: "",
     code: "235",
     category: "dama-mini-tote",
     description: "TOTE BAG DAMA en blanco y negro con diseño atemporal.",
@@ -1798,28 +1798,28 @@ const products = [
   },
    {
     id: 149,
-    name: "TOTE BAG",
+    name: "Machete Tramontina V2",
     code: "224",
     category: "dama-tote",
-    description: "",
+    description: "20 pulgadas, mango propileno",
     colors: [],
     stock: "Consultar disponibilidad",
-    imageUrl: "img/Cod230.jpeg",
+    imageUrl: "img/Jardin.jpeg",
     image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
     price: 18000,
     sold: 0,
   },
    {
     id: 150,
-    name: "BILLETERA TAXISTA",
+    name: "Machete angosto Tramontina",
     code: "225",
-    category: "caballero-billeteras",
-    description: "3 cierres",
-    colors: ["Cafe", "Negro", "Marron"],
+    category: "machetes",
+    description: "18 pulgadas, mango propileno",
+    colors: [],
     stock: "Consultar disponibilidad",
-    imageUrl: "img/Cod 184.jpeg",
+    imageUrl: "img/cod1.jpeg",
     image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
-    price: 6000,
+    price: 12000,
     sold: 0,
   },
    {
@@ -1830,7 +1830,7 @@ const products = [
     description: "3 cierres",
     colors: ["Beige", "Negro", "Marron"],
     stock: "Consultar disponibilidad",
-    imageUrl: "img/Cod226.jpeg",
+    imageUrl: "img/",
     image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
     price: 14000,
     sold: 0,
@@ -2160,7 +2160,7 @@ TOTAL: ${money.format(cartTotal())}
 Cliente: ${customer}`;
 }
 
-function whatsappUrl(message = "Hola R&B mayorista, quiero hacer una consulta.") {
+function whatsappUrl(message = "Hola MENSAJERIA WILSON, quiero hacer una consulta.") {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
@@ -2172,12 +2172,11 @@ function updateWhatsappLinks() {
 
 function consultProduct(productId) {
   const product = products.find((item) => item.id === productId);
-  const message = `Hola R&B mayorista, quiero consultar por:
+  const message = `Hola MENSAJERIA WILSON, quiero consultar por:
 
 Producto: ${product.name}
 Codigo: ${product.code}
 Categoria: ${getCategory(product.category).name}
-
 Quedo atento/a para confirmar disponibilidad y precio.`;
   window.open(whatsappUrl(message), "_blank", "noopener");
 }

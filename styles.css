@@ -78,8 +78,8 @@ button {
 }
 
 .brand-logo {
-  max-height: 100px;
-  width: auto;
+  max-height: 200px;
+  width: 260px;
   display: block;
 }
 
@@ -334,7 +334,7 @@ h3 {
   height: 72%;
   background:
     linear-gradient(135deg, rgba(130, 84, 61, 0.78), rgba(31, 30, 30, 0.18)),
-    url("img/Cod2.jpeg") center/cover;
+    url("img/Jardin.jpeg") center/cover;
 }
 
 .product-stack-two {
@@ -344,7 +344,7 @@ h3 {
   height: 50%;
   background:
     linear-gradient(135deg, rgba(65, 49, 42, 0.65), rgba(184, 137, 115, 0.22)),
-    url("img/Portacel 2.png") center/cover;
+    url("img/Belleza.jpeg") center/cover;
 }
 
 .product-stack-three {
@@ -354,7 +354,7 @@ h3 {
   height: 34%;
   background:
     linear-gradient(135deg, rgba(32, 32, 32, 0.66), rgba(198, 167, 106, 0.22)),
-    url("img/Cod3.jpeg") center/cover;
+    url("img/Nuevo.jpeg") center/cover;
 }
 
 .benefits {
@@ -1198,7 +1198,7 @@ textarea {
   }
 }
 .hero h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: '', serif;
   font-size: 3rem;
   font-weight: 200;
 }
@@ -1299,4 +1299,19 @@ textarea {
 .cart-note {
   font-size: 12px;
   margin: 6px 0;
+}
+@media (max-width: 468px) {
+  .product-image {
+    min-height: 85px;
+  }
+
+  .product-image--large {
+    min-height: 85px;
+  }
+}
+@media (max-width: 768px) {
+  .product-detail img {
+    max-height: 250px;
+    object-fit: contain;
+  }
 }
