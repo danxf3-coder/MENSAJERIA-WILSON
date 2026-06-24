@@ -1300,13 +1300,13 @@ textarea {
   font-size: 12px;
   margin: 6px 0;
 }
-@media (max-width: 468px) {
+@media (max-width: 140px) {
   .product-image {
-    min-height: 140px;
+    min-height: 200px;
   }
 
   .product-image--large {
-    min-height: 140px;
+    min-height: 200px;
   }
 }
 @media (max-width: 768px) {
