@@ -1302,11 +1302,11 @@ textarea {
 }
 @media (max-width: 468px) {
   .product-image {
-    min-height: 85px;
+    min-height: 140px;
   }
 
   .product-image--large {
-    min-height: 85px;
+    min-height: 140px;
   }
 }
 @media (max-width: 768px) {
