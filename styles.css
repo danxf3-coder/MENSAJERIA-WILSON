@@ -887,15 +887,15 @@ textarea {
   transform: translateY(-2px);
 }
 
-.cart-thumb {
-  width: 84px;
-  min-height: 84px;
-  border-radius: 12px;
-  background: var(--soft-2);
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-shrink: 0;
+.cart-thumb img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: .3s;
+}
+
+.cart-thumb:hover img{
+  transform: scale(1.08);
 }
 
 .cart-item h3 {
@@ -1328,4 +1328,7 @@ textarea {
 
 #showCheckout {
   margin: 16px 0;
+}
+#cartStep2 {
+  display: none;
 }

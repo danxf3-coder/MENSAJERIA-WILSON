@@ -585,7 +585,9 @@ function renderCart() {
       const subtotal = productSubtotal(product, item.quantity);
       return `
         <article class="cart-item">
-          <div class="cart-thumb" style="background:${product.image}" aria-hidden="true"></div>
+          <div class="cart-thumb" style="background:${product.image}">
+  <img src="${product.imageUrl}" alt="${product.name}">
+</div>
           <div>
           <div>
   <h3>${product.name}</h3>
@@ -617,6 +619,9 @@ function cartTotal() {
 function openCart() {
   els.cartDrawer.classList.add("open");
   els.cartDrawer.setAttribute("aria-hidden", "false");
+
+  cartStep1.style.display = "block";
+  cartStep2.style.display = "none";
 }
 
 function closeCart() {
@@ -853,17 +858,18 @@ updateWhatsappLinks();
 renderCategories();
 renderProducts();
 renderCart();
-const checkoutButton = document.getElementById("showCheckout");
-const checkoutForm = document.getElementById("checkoutForm");
+const cartStep1 = document.getElementById("cartStep1");
+const cartStep2 = document.getElementById("cartStep2");
 
-checkoutButton.addEventListener("click", () => {
+const nextStep = document.getElementById("nextStep");
+const backStep = document.getElementById("backStep");
 
-  checkoutForm.classList.toggle("open");
+nextStep.addEventListener("click", () => {
+  cartStep1.style.display = "none";
+  cartStep2.style.display = "block";
+});
 
-  if (checkoutForm.classList.contains("open")) {
-    checkoutButton.textContent = "Ocultar datos de envío";
-  } else {
-    checkoutButton.textContent = "Continuar con el envío";
-  }
-
+backStep.addEventListener("click", () => {
+  cartStep2.style.display = "none";
+  cartStep1.style.display = "block";
 });
