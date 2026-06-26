@@ -1315,3 +1315,17 @@ textarea {
     object-fit: contain;
   }
 }
+.checkout-form {
+  display: none;
+  margin-top: 20px;
+}
+
+.checkout-form.open {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#showCheckout {
+  margin: 16px 0;
+}

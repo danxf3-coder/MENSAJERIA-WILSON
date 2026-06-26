@@ -385,6 +385,10 @@ const els = {
   detailModal: document.querySelector("[data-detail-modal]"),
   detail: document.querySelector(".product-detail"),
   customerName: document.querySelector("#customerName"),
+  customerAddress: document.querySelector("#customerAddress"),
+  customerPostal: document.querySelector("#customerPostal"),
+  customerCity: document.querySelector("#customerCity"),
+  customerApartment: document.querySelector("#customerApartment"),
   customerNotes: document.querySelector("#customerNotes"),
 };
 
@@ -656,6 +660,11 @@ function closeDetail() {
 
 function buildOrderMessage() {
   const customer = els.customerName.value.trim() || "No indicado";
+  const address = els.customerAddress.value.trim() || "No indicada";
+  const postal = els.customerPostal.value.trim() || "No indicado";
+  const city = els.customerCity.value.trim() || "No indicada";
+  const apartment = els.customerApartment.value.trim() || "Sin especificar";
+  const notes = els.customerNotes.value.trim() || "Ninguna";
 
   const lines = state.cart.map((item) => {
     const product = products.find((entry) => entry.id === item.productId);
@@ -669,13 +678,24 @@ function buildOrderMessage() {
   Subtotal: ${money.format(subtotal)}`;
   });
 
-  return `Nuevo pedido:
+  return `🛒 *NUEVO PEDIDO*
 
 ${lines.join("\n\n")}
 
-TOTAL: ${money.format(cartTotal())}
+💰 TOTAL: ${money.format(cartTotal())}
 
-Cliente: ${customer}`;
+👤 Cliente: ${customer}
+
+📍 Dirección: ${address}
+
+🏙️ Localidad: ${city}
+
+📮 Código Postal: ${postal}
+
+🏢 Piso/Depto: ${apartment}
+
+📝 Observaciones:
+${notes}`;
 }
 
 function whatsappUrl(message = "Hola MENSAJERIA WILSON, quiero hacer una consulta.") {
@@ -833,3 +853,17 @@ updateWhatsappLinks();
 renderCategories();
 renderProducts();
 renderCart();
+const checkoutButton = document.getElementById("showCheckout");
+const checkoutForm = document.getElementById("checkoutForm");
+
+checkoutButton.addEventListener("click", () => {
+
+  checkoutForm.classList.toggle("open");
+
+  if (checkoutForm.classList.contains("open")) {
+    checkoutButton.textContent = "Ocultar datos de envío";
+  } else {
+    checkoutButton.textContent = "Continuar con el envío";
+  }
+
+});

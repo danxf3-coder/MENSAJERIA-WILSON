@@ -215,14 +215,43 @@
           <button class="icon-button" type="button" data-close-cart aria-label="Cerrar carrito">×</button>
         </div>
         <div class="cart-items" data-cart-items></div>
+        <button
+    class="btn btn-primary full"
+    type="button"
+    id="showCheckout">
+    Continuar con el envío
+</button>
+
+<div class="checkout-form" id="checkoutForm">
         <label>
-          Nombre del cliente
-          <input id="customerName" type="text" placeholder="Opcional" />
-        </label>
-        <label>
-          Aclaraciones
-          <textarea id="customerNotes" rows="3" placeholder="Colores, entrega, consultas..."></textarea>
-        </label>
+  Nombre del cliente
+  <input id="customerName" type="text" placeholder="Nombre y apellido" />
+</label>
+
+<label>
+  Dirección
+  <input id="customerAddress" type="text" placeholder="Ej: Av. Rivadavia 1234" />
+</label>
+
+<label>
+  Código Postal
+  <input id="customerPostal" type="text" placeholder="Ej: 1406" />
+</label>
+
+<label>
+  Localidad
+  <input id="customerCity" type="text" placeholder="Ej: Caballito" />
+</label>
+
+<label>
+  Piso / Departamento
+  <input id="customerApartment" type="text" placeholder="Opcional" />
+</label>
+
+<label>
+  Aclaraciones
+  <textarea id="customerNotes" rows="3" placeholder="Colores, horario de entrega, referencias..."></textarea>
+</label>
         <p class="cart-note">Tu pedido se enviara por WhatsApp para confirmar disponibilidad. El total es estimado.</p>
         <div class="cart-total">
           <span>Total estimado</span>
