@@ -254,9 +254,71 @@
 
 <label>
   Localidad
-  <input id="customerCity" type="text" placeholder="Ej: Caballito" />
-</label>
+  <select id="customerCity">
 
+    <option value="">Seleccioná tu localidad</option>
+
+    <optgroup label="Capital Federal">
+      <option value="Capital Federal">Capital Federal</option>
+    </optgroup>
+
+    <optgroup label="Primer cordón">
+      <option value="La Matanza Norte">La Matanza Norte</option>
+      <option value="San Fernando">San Fernando</option>
+      <option value="San Isidro">San Isidro</option>
+      <option value="San Martín">San Martín</option>
+      <option value="Vicente López">Vicente López</option>
+      <option value="Tres de Febrero">Tres de Febrero</option>
+      <option value="Hurlingham">Hurlingham</option>
+      <option value="Ituzaingó">Ituzaingó</option>
+      <option value="Morón">Morón</option>
+      <option value="Lomas de Zamora">Lomas de Zamora</option>
+      <option value="Lanús">Lanús</option>
+      <option value="Avellaneda">Avellaneda</option>
+    </optgroup>
+
+    <optgroup label="Segundo cordón">
+      <option value="Tigre">Tigre</option>
+      <option value="Malvinas Argentinas">Malvinas Argentinas</option>
+      <option value="San Miguel">San Miguel</option>
+      <option value="José C. Paz">José C. Paz</option>
+      <option value="Moreno">Moreno</option>
+      <option value="Merlo">Merlo</option>
+      <option value="La Matanza Sur">La Matanza Sur</option>
+      <option value="Esteban Echeverría">Esteban Echeverría</option>
+      <option value="Ezeiza">Ezeiza</option>
+      <option value="Almirante Brown">Almirante Brown</option>
+      <option value="Quilmes">Quilmes</option>
+      <option value="Berazategui">Berazategui</option>
+      <option value="Florencio Varela">Florencio Varela</option>
+    </optgroup>
+
+    <optgroup label="Tercer cordón">
+      <option value="Nordelta">Nordelta</option>
+      <option value="Ingeniero Maschwitz">Ingeniero Maschwitz</option>
+      <option value="Garín">Garín</option>
+      <option value="Escobar">Escobar</option>
+      <option value="Del Viso">Del Viso</option>
+      <option value="Derqui">Derqui</option>
+      <option value="Villa Rosa">Villa Rosa</option>
+      <option value="Pilar">Pilar</option>
+      <option value="Campana">Campana</option>
+      <option value="Zárate">Zárate</option>
+      <option value="Luján">Luján</option>
+      <option value="General Rodríguez">General Rodríguez</option>
+      <option value="Marcos Paz">Marcos Paz</option>
+      <option value="Cañuelas">Cañuelas</option>
+      <option value="Guernica">Guernica</option>
+      <option value="San Vicente">San Vicente</option>
+      <option value="La Plata">La Plata</option>
+      <option value="Ensenada">Ensenada</option>
+      <option value="Berisso">Berisso</option>
+    </optgroup>
+  </select>
+</label>
+<p id="shippingInfo" class="shipping-info">
+  🚚 Seleccioná una localidad para calcular el costo del envío.
+</p>
 <label>
   Piso / Departamento
   <input id="customerApartment" type="text" placeholder="Opcional" />

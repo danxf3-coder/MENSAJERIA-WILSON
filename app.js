@@ -1,7 +1,57 @@
 const WHATSAPP_NUMBER = "5491167016489";
 
 const PURCHASE_LABEL = "Precio";
+const SHIPPING_PRICES = {
+  "Capital Federal": 2990,
 
+  "La Matanza Norte": 3570,
+  "San Fernando": 3570,
+  "San Isidro": 3570,
+  "San Martín": 3570,
+  "Vicente López": 3570,
+  "Tres de Febrero": 3570,
+  "Hurlingham": 3570,
+  "Ituzaingó": 3570,
+  "Morón": 3570,
+  "Lomas de Zamora": 3570,
+  "Lanús": 3570,
+  "Avellaneda": 3570,
+
+  "Tigre": 4490,
+  "Malvinas Argentinas": 4490,
+  "San Miguel": 4490,
+  "José C. Paz": 4490,
+  "Moreno": 4490,
+  "Merlo": 4490,
+  "La Matanza Sur": 4490,
+  "Esteban Echeverría": 4490,
+  "Ezeiza": 4490,
+  "Almirante Brown": 4490,
+  "Quilmes": 4490,
+  "Berazategui": 4490,
+  "Florencio Varela": 4490,
+
+  "Nordelta": 6990,
+  "Ingeniero Maschwitz": 6990,
+  "Garín": 6990,
+  "Escobar": 6990,
+  "Del Viso": 6990,
+  "Derqui": 6990,
+  "Villa Rosa": 6990,
+  "Pilar": 6990,
+  "Campana": 6990,
+  "Zárate": 6990,
+  "Luján": 6990,
+  "General Rodríguez": 6990,
+  "Marcos Paz": 6990,
+  "Cañuelas": 6990,
+  "Guernica": 6990,
+  "San Vicente": 6990,
+  "La Plata": 6990,
+  "Ensenada": 6990,
+  "Berisso": 6990
+};
+customerCity
 const categories = [
   { id: "all", name: "Todas", group: "Catalogo" },
   { id: "ofertas-productos", name: "Ofertas", group: "" },
@@ -353,6 +403,19 @@ const products = [
     price: 14657,
     sold: 0,
   },
+  {
+  id: 1,
+  name: "",
+  code: "",
+  category: "",
+  description: "",
+  colors: [],
+  stock: "Consultar disponibilidad",
+  imageUrl: "img/",
+  image: "linear-gradient(135deg, #f0f6fb, #dbeef8)",
+  price: 0,
+  sold: 0,
+},
 ];
 
 let state = {
@@ -388,6 +451,7 @@ const els = {
   customerAddress: document.querySelector("#customerAddress"),
   customerPostal: document.querySelector("#customerPostal"),
   customerCity: document.querySelector("#customerCity"),
+  shippingInfo: document.querySelector("#shippingInfo"),
   customerApartment: document.querySelector("#customerApartment"),
   customerNotes: document.querySelector("#customerNotes"),
 };
@@ -606,7 +670,29 @@ function renderCart() {
     })
     .join("");
 
-  els.cartTotal.textContent = money.format(cartTotal());
+  const shipping =
+  SHIPPING_PRICES[els.customerCity?.value] || 0;
+
+const total = cartTotal() + shipping;
+
+els.cartTotal.innerHTML = `
+<div style="display:flex;justify-content:space-between;">
+  <span>Productos</span>
+  <strong>${money.format(cartTotal())}</strong>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:6px;">
+  <span>Envío</span>
+  <strong>${money.format(shipping)}</strong>
+</div>
+
+<hr style="margin:10px 0;">
+
+<div style="display:flex;justify-content:space-between;font-size:1.1rem;">
+  <span><strong>Total</strong></span>
+  <strong>${money.format(total)}</strong>
+</div>
+`;
 }
 
 function cartTotal() {
@@ -615,7 +701,21 @@ function cartTotal() {
     return sum + productSubtotal(product, item.quantity);
   }, 0);
 }
+function updateShippingInfo() {
+  const city = els.customerCity.value;
 
+  if (!city) {
+    els.shippingInfo.textContent =
+      "🚚 Seleccioná una localidad para calcular el costo del envío.";
+    return;
+  }
+
+  const shipping = SHIPPING_PRICES[city] || 0;
+
+  els.shippingInfo.textContent =
+    `🚚 Envío a ${city}: ${money.format(shipping)}`;
+    renderCart();
+}
 function openCart() {
   els.cartDrawer.classList.add("open");
   els.cartDrawer.setAttribute("aria-hidden", "false");
@@ -682,25 +782,36 @@ function buildOrderMessage() {
   Precio: ${formatProductPrice(product)}
   Subtotal: ${money.format(subtotal)}`;
   });
+  const shipping = SHIPPING_PRICES[els.customerCity.value] || 0;
+const subtotal = cartTotal();
+const total = subtotal + shipping;
 
-  return `🛒 *NUEVO PEDIDO*
+return `🛒 NUEVO PEDIDO
 
 ${lines.join("\n\n")}
 
-💰 TOTAL: ${money.format(cartTotal())}
+────────────────────────
+
+💰 Subtotal productos: ${money.format(subtotal)}
+
+🛻 Envío (${els.customerCity.value}): ${money.format(shipping)}
+
+💵 TOTAL: ${money.format(total)}
+
+────────────────────────
 
 👤 Cliente: ${customer}
 
-📍 Dirección: ${address}
+📍 Dirección: ${els.customerAddress.value}
 
-🏙️ Localidad: ${city}
+🗺️ Localidad: ${els.customerCity.value}
 
-📮 Código Postal: ${postal}
+📫 Código Postal: ${els.customerPostal.value}
 
-🏢 Piso/Depto: ${apartment}
+🏢 Piso / Depto: ${els.customerApartment.value || "No indicado"}
 
-📝 Observaciones:
-${notes}`;
+📋 Aclaraciones:
+${els.customerNotes.value || "Ninguna"}`;
 }
 
 function whatsappUrl(message = "Hola MENSAJERIA WILSON, quiero hacer una consulta.") {
@@ -858,6 +969,7 @@ updateWhatsappLinks();
 renderCategories();
 renderProducts();
 renderCart();
+updateShippingInfo();
 const cartStep1 = document.getElementById("cartStep1");
 const cartStep2 = document.getElementById("cartStep2");
 
@@ -873,3 +985,4 @@ backStep.addEventListener("click", () => {
   cartStep2.style.display = "none";
   cartStep1.style.display = "block";
 });
+els.customerCity.addEventListener("change", updateShippingInfo);
